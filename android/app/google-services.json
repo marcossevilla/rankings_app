@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "876365104929",
+    "project_id": "ranking-app-1c8f2",
+    "storage_bucket": "ranking-app-1c8f2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876365104929:android:b0d5947679d0fbe2876060",
+        "android_client_info": {
+          "package_name": "dev.marcossevilla.ranking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA04uIk465rKI4eIr8etKBks-BRl-fbPpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876365104929:android:da6c688ed4ba39e7876060",
+        "android_client_info": {
+          "package_name": "dev.marcossevilla.rankings_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA04uIk465rKI4eIr8etKBks-BRl-fbPpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
