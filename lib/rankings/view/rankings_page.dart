@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rankings_app/l10n/l10n.dart';
 import 'package:rankings_app/rankings/rankings.dart';
 import 'package:rankings_repository/rankings_repository.dart';
 
@@ -22,7 +23,12 @@ class RankingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final state = context.watch<RankingsBloc>().state;
+
+    final showFloatingActionButton =
+        state.status != RankingsStatus.initial &&
+        state.status != RankingsStatus.requesting;
 
     return RefreshIndicator.adaptive(
       onRefresh: () async {
@@ -30,7 +36,7 @@ class RankingsView extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Rankings'),
+          title: Text(l10n.rankingsAppBarTitle),
         ),
         body: Center(
           child: switch (state.status) {
@@ -40,21 +46,23 @@ class RankingsView extends StatelessWidget {
             RankingsStatus.requesting =>
               const CircularProgressIndicator.adaptive(),
             RankingsStatus.success => RankingsList(rankings: state.rankings),
-            RankingsStatus.failure => const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
+            RankingsStatus.failure => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Text(
-                'AI can be a bit lazy sometimes, could you generate again?',
+                l10n.rankingsErrorText,
                 textAlign: TextAlign.center,
               ),
             ),
           },
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => context.read<RankingsBloc>().add(
-            const RankingsSubmitted(),
-          ),
-          child: const Icon(Icons.question_answer),
-        ),
+        floatingActionButton: showFloatingActionButton
+            ? FloatingActionButton(
+                onPressed: () => context.read<RankingsBloc>().add(
+                  const RankingsRestarted(),
+                ),
+                child: const Icon(Icons.question_answer),
+              )
+            : null,
       ),
     );
   }

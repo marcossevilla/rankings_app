@@ -1,7 +1,19 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "rankingsAppBarTitle": "Rankings",
+    "@rankingsAppBarTitle": {
+        "description": "Text shown in the AppBar of the Rankings Page"
+    },
+    "rankingsErrorText": "AI can be a bit lazy sometimes, could you generate again?",
+    "@rankingsErrorText": {
+        "description": "Text shown in the error widget of the Rankings Page"
+    },
+    "rankingsFormCategoryHint": "Category",
+    "@rankingsFormCategoryHint": {
+        "description": "Text shown in the TextField of the Rankings Form"
+    },
+    "rankingsFormSubmitButton": "Rank",
+    "@rankingsFormSubmitButton": {
+        "description": "Text shown in the FilledButton of the Rankings Form"
     }
 }

@@ -39,6 +39,8 @@ class RankingsRepository {
 
   String _getRequest(RankingRequest request) {
     return '''
+Here is the user's query:
+
 Generate a list of ${request.maxAmount} items ranked by relevance to the user query.
 Category: ${request.category}.
   ''';
@@ -49,10 +51,11 @@ const _basePrompt = '''
 You are a ranking expert. 
 You are given a category of items and a user query.
 You must return a list of items ranked by relevance to the user query.
-Return only the list of items, do not add any additional text.
+Return only the list of items, do not add any additional text like markdown, 
+this should be a JSON array of objects as if you were calling a JSON API.
 The list should be ordered from most relevant to least relevant.
 The list should be a JSON array of objects, the format is the following example:
-"
+
 [
   {
     "rank": 1,
@@ -70,7 +73,4 @@ The list should be a JSON array of objects, the format is the following example:
     "description": "Item 3 is ranked third because..."
   }
 ]
-"
-
-Here is the user's query:
 ''';

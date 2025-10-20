@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rankings_app/l10n/l10n.dart';
 import 'package:rankings_app/rankings/rankings.dart';
 
 class RankingsForm extends StatelessWidget {
@@ -12,6 +13,7 @@ class RankingsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
@@ -30,7 +32,7 @@ class RankingsForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
-              hintText: 'Category',
+              hintText: l10n.rankingsFormCategoryHint,
             ),
             onChanged: (input) => context.read<RankingsBloc>().add(
               RankingsInputChanged(input),
@@ -63,7 +65,7 @@ class RankingsForm extends StatelessWidget {
           FilledButton.tonalIcon(
             iconAlignment: IconAlignment.end,
             icon: const Icon(Icons.send),
-            label: const Text('Rank'),
+            label: Text(l10n.rankingsFormSubmitButton),
             onPressed: () => context.read<RankingsBloc>().add(
               const RankingsSubmitted(),
             ),
